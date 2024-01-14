@@ -1,0 +1,161 @@
+// .logo{
+//     max-width:120px
+//   }
+//   .center {
+//       border: 1px solid black;
+//       border-radius: 5px;
+//       justify-content: center;
+//       background-color: #3A6DB3;
+//     }
+    
+//     .containerBox {
+//       background-color: #4C95D5;
+//     }
+    
+//     .buttonColor {
+//       background-color: #E4E4E4;
+//       color: #374BB5;
+//       font-weight: bold;
+//     }
+    
+//     .form_center {
+//       padding: 10px;
+//       width: 1000px;
+//       align-items: center;
+//     }
+    
+//     .login-form {
+//       background: rgb(56, 72, 158);
+//       background: linear-gradient(340deg, rgba(56, 72, 158, 1) 0%, rgba(104, 163, 200, 1) 100%);
+//     }
+    
+//     .login-form-bg {
+//       height: 100vh;
+//       position: relative;
+//       /* background-size: cover; */
+//       background: rgb(69, 77, 175) no-repeat;
+//       background: linear-gradient(340deg, rgba(69, 77, 175, 1) 0%, rgba(165, 221, 240, 1) 100%);
+//       background-size: cover;
+//     }
+    
+//     .login-form-center {
+//       width: 50%;
+//       max-width: 500px;
+//       height: 300px;
+    
+//       position: absolute;
+//       top: 0;
+//       bottom: 0;
+//       left: 0;
+//       right: 0;
+    
+//       margin: auto;
+//     }
+    
+//     .input-login {
+//       background: rgb(80, 129, 219);
+//       background: linear-gradient(340deg, rgba(80, 129, 219, 1) 0%, rgba(131, 207, 228, 1) 100%);
+//     }
+    
+    
+
+@import '~bootstrap/dist/css/bootstrap.css';
+
+
+// Colors
+$greenSeaweed: #e28743;
+$blueQueen:  #f97008;
+$redFire: #2E3E4F;
+
+// Fonts
+$fontAsap: 'Asap', sans-serif;
+
+.bg-main {
+  background-color: $redFire;
+  font-family: $fontAsap;
+}
+.background-logo {
+width: 20%;      
+}
+.login {
+  overflow: hidden;
+  background-color: white;
+  padding: 40px 30px 30px 30px;
+  border-radius: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 55%;
+  min-height: 36%; 
+  transform: translate(-50%, -50%);
+  transition: transform 300ms, box-shadow 300ms;
+  box-shadow: 5px 10px 10px rgba($greenSeaweed, 0.2);
+  
+  &::before, &::after {
+    content: '';
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-top-left-radius: 40%;
+    border-top-right-radius: 45%;
+    border-bottom-left-radius: 35%;
+    border-bottom-right-radius: 40%;
+    z-index: -1;
+  }
+  
+  &::before {
+    left: 40%;
+    bottom: -130%;
+    background-color: rgba($blueQueen, 0.35);
+    animation: waves 6s infinite linear;
+  }
+  
+  &::after {
+    left: 35%;
+    bottom: -125%;
+    background-color: rgba($greenSeaweed, 0.4);
+    animation: waves 5s infinite;
+  }
+  
+  > input {
+    font-family: $fontAsap;
+    display: block;
+    border-radius: 5px;
+    font-size: 16px;
+    background: white;
+    width: 100%;
+    border: 0;
+    padding: 10px 10px;
+    margin: 15px -10px;
+  }
+  
+  > button {
+    font-family: $fontAsap;
+    cursor: pointer;
+    color: #fff;
+    font-size: 16px;
+    text-transform: uppercase;
+    width: 80px;
+    border: 0;
+    padding: 10px 0;
+    margin-top: 10px;
+    margin-left: -5px;
+    border-radius: 5px;
+    background-color: $redFire;
+    transition: background-color 300ms;
+    
+    &:hover {
+      background-color: darken($redFire, 5%);
+    }
+  }
+}
+
+@keyframes waves {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+  
