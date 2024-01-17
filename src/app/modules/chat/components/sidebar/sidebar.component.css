@@ -1,0 +1,39 @@
+@media (min-width: 640px) and (max-width: 768px) {
+  #separator-sidebar {
+    width: 15rem;
+  }
+}
+.active {
+  background-color: rgb(95, 94, 94);
+  border-radius: 6px;
+  color: white;
+}
+.custom-hover:hover {
+  background-color: #333; /* Add your preferred dark mode background color */
+  color: #fff; /* Add your preferred dark mode text color */
+  /* Add any additional styles for the dark mode hover effect */
+}
+.custom-sidebar {
+  transition: transform 0.3s ease;
+  width: 35%;
+  height: 100%;
+  z-index: 1111;
+  background-color: #0303037a;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add box-shadow based on your design */
+  /* ... Add any other custom styles you need */
+}
+.custom-div {
+  height: 100%; /* Equivalent to h-full */
+  padding: 1rem 0.75rem; /* Equivalent to px-3 py-4 */
+  background-color: #0f172abf; /* Equivalent to bg-[#0f172abf] */
+  color: #ffffff; /* Equivalent to text-white */
+  /* Add any other custom styles you need */
+}
+.custom-ul {
+  font-weight: 500; 
+  max-height: 80%; 
+  overflow-y: auto; 
+}
+.border-newChat{
+  border: 1px solid rgba(255, 255, 255, 0.75); 
+}

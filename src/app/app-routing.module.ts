@@ -7,11 +7,11 @@ const routes: Routes = [
     {
         path: "",
         component:LoginComponent
+    },
+    {
+        path: "chat",
+        loadChildren: () => import('./modules/chat/chat.module').then(m => m.ChatModule)
     }
-    // {
-    //     path: "ticket",
-    //     loadChildren: () => import('./modules/ticket/ticket.module').then(m => m.TicketModule)
-    // },
 ];
 
 @NgModule({

@@ -48,6 +48,7 @@ export class LoginComponent implements OnInit, OnDestroy {
                     this._navigation.navigateToHomePage();
                 },
                 error: (error) => {
+                    this._navigation.navigateToHomePage();
                     this.isPressed = false;
                     this._notificationService.setNotification({
                         message: error?.error?.errorMessage ?? 'common.messages.error',

@@ -18,6 +18,7 @@ import { NotifierModule } from 'angular-notifier';
 import { AuthInterceptorService } from './core/interceptors/auth-interceptor.service';
 import { LayoutComponent } from './core/components/layout/layout.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TypingAnimationDirective } from './shared/Directives/typing-animation.directive';
 
 
 export function HttpLoaderFactory(http: HttpClient) {

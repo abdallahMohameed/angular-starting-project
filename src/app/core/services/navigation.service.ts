@@ -7,9 +7,11 @@ import { Router } from '@angular/router';
 export class NavigationService {
 
     currentUrl = "";
+    chatUrl = "chat/";
 
     constructor(private router: Router) { }
 
     navigateToHomePage() {
+        this.router.navigateByUrl(this.chatUrl);
     }
 }
