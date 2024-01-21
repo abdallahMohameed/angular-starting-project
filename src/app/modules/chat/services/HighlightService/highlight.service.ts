@@ -5,10 +5,7 @@ import { isPlatformBrowser } from '@angular/common';
 
 
 import 'prismjs';
-
 import 'prismjs/plugins/toolbar/prism-toolbar';
-import 'prismjs/components/prism-scala';
-
 import 'prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard';
 import 'prismjs/components/prism-css';
 import 'prismjs/components';
@@ -27,13 +24,7 @@ declare var Prism: any;
 export class HighlightService {
 
     constructor(@Inject(PLATFORM_ID) private platformId: Object) {
-        for (let lang in Prism.languages) {
-            console.log('-----' + lang + '-----');
-            
-            for (let tokenName in Prism.languages[lang]) {
-                console.log(tokenName);
-            }
-        }
+
      }
 
     highlightAll() {
