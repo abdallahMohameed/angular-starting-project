@@ -10,6 +10,7 @@ import gsap from 'gsap';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ChatService } from '../../services/chat/chat.service';
 import { ChatCompletionRequestMessageRoleEnum, ChatMessage } from '../../interfaces/chat-message';
+import { HighlightService } from '../../services/HighlightService/highlight.service';
 
 @Component({
     selector: 'app-chat-content',
@@ -19,9 +20,10 @@ import { ChatCompletionRequestMessageRoleEnum, ChatMessage } from '../../interfa
 export class ChatContentComponent
 implements OnInit, AfterViewChecked, AfterViewInit
 {
-    isLightMode=false;
+    isLightMode = false;
     constructor(
-    private chatService: ChatService
+    private chatService: ChatService,
+    private highlightService: HighlightService
     ) {}
 
   @ViewChild('window') window!: any;
@@ -46,13 +48,13 @@ implements OnInit, AfterViewChecked, AfterViewInit
   }
 
   ngAfterViewInit() {
-    this.setupAnimation();
-
+      this.setupAnimation();
       this.textInputRef.nativeElement.focus();
   }
 
   ngAfterViewChecked(): void {
       this.scrollToBottom();
+      this.highlightService.highlightAll();
   }
 
   async createCompletion(element: HTMLTextAreaElement) {
@@ -75,11 +77,7 @@ implements OnInit, AfterViewChecked, AfterViewInit
                   this.setupAnimation();
               }, 10);
 
-              const completion = await this.chatService.createCompletionViaLocalAI(
-                  this.messages
-              );
-              console.log(completion);
-
+              const completion = await this.chatService.createCompletionViaLocalAI(this.messages);
               const responseMessage: ChatMessage = {
                   role:ChatCompletionRequestMessageRoleEnum.Assistant,
                   content: completion
@@ -87,13 +85,18 @@ implements OnInit, AfterViewChecked, AfterViewInit
 
               this.messages.push(responseMessage);
           } catch (err) {
+              const errorResponseMessage: ChatMessage = {
+                  role:ChatCompletionRequestMessageRoleEnum.Assistant,
+                  content: 'error in server'
+              };
 
+              this.messages.push(errorResponseMessage);
           }
 
           this.chatService.setMessagesSubject(this.messages);
           this.isBusy = false;
           this.scrollToBottom();
-          
+
       }
 
   }
@@ -102,28 +105,28 @@ implements OnInit, AfterViewChecked, AfterViewInit
       window.scrollTo(0, document.body.scrollHeight);
   }
   private setupAnimation(): void {
-    const tl = gsap.timeline({ repeat: -1, repeatDelay: 1 });
+      const tl = gsap.timeline({ repeat: -1, repeatDelay: 1 });
 
-    tl.to(".left, .right", { duration: 0.4, x: 5 });
-    tl.to(".topLid", { duration: 0.1, y: -50 });
-    tl.to(".btmLid", { duration: 0.1, y: 50 }, "<");
-    tl.to(".topLid", { duration: 0.1, y: 0 });
-    tl.to(".btmLid", { duration: 0.1, y: 0 }, "<");
-    tl.to(".topLid", { duration: 0.1, y: -50 });
-    tl.to(".btmLid", { duration: 0.1, y: 50 }, "<");
-    tl.to(".left, .right", { duration: 0.4, x: 30 }, "+=2");
-    tl.to(".left, .right", { duration: 0.5, x: -25 });
-    tl.to(".left, .right", { duration: 0.4, x: 30 }, "+=.5");
-    tl.to(".topLid", { duration: 0.1, y: 0 });
-    tl.to(".btmLid", { duration: 0.1, y: 0 }, "<");
-    tl.to(".topLid", { duration: 0.1, y: -50 });
-    tl.to(".btmLid", { duration: 0.1, y: 50 }, "<");
-    tl.to(".left, .right", { duration: 0.4, x: -25 });
-    tl.to(".left, .right", { duration: 2.5, rotate: 360 }, "+=1");
-    tl.to(".left, .right", { duration: 0.4, x: 5 }, "+=1");
-    setTimeout(() => {
-           this.scrollToBottom();
-        
-       }, 100);
-}
+      tl.to(".left, .right", { duration: 0.4, x: 5 });
+      tl.to(".topLid", { duration: 0.1, y: -50 });
+      tl.to(".btmLid", { duration: 0.1, y: 50 }, "<");
+      tl.to(".topLid", { duration: 0.1, y: 0 });
+      tl.to(".btmLid", { duration: 0.1, y: 0 }, "<");
+      tl.to(".topLid", { duration: 0.1, y: -50 });
+      tl.to(".btmLid", { duration: 0.1, y: 50 }, "<");
+      tl.to(".left, .right", { duration: 0.4, x: 30 }, "+=2");
+      tl.to(".left, .right", { duration: 0.5, x: -25 });
+      tl.to(".left, .right", { duration: 0.4, x: 30 }, "+=.5");
+      tl.to(".topLid", { duration: 0.1, y: 0 });
+      tl.to(".btmLid", { duration: 0.1, y: 0 }, "<");
+      tl.to(".topLid", { duration: 0.1, y: -50 });
+      tl.to(".btmLid", { duration: 0.1, y: 50 }, "<");
+      tl.to(".left, .right", { duration: 0.4, x: -25 });
+      tl.to(".left, .right", { duration: 2.5, rotate: 360 }, "+=1");
+      tl.to(".left, .right", { duration: 0.4, x: 5 }, "+=1");
+      setTimeout(() => {
+          this.scrollToBottom();
+
+      }, 100);
+  }
 }

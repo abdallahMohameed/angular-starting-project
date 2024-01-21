@@ -36,8 +36,16 @@ export class ChatService {
 
             const response = await this.http.post(apiUrl, requestObject, { responseType: 'text' }).toPromise();
 
+
+            if (response) {
+                console.log(this.addHTMLTagsToResponseCode(response?.replace("User:", '')));
+                console.log(response?.replace("User:", ''));
+                
+                return this.addHTMLTagsToResponseCode(response?.replace("User:", ''));
+            }
             // Return the response as a string
             return response?.replace("User:", '');
+
         } catch (error) {
             console.error('Error in createCompletionViaLocalAI:', error);
             throw error; // Rethrow the error to handle it at the caller level if needed.
@@ -51,4 +59,32 @@ export class ChatService {
     public getMessagesSubject(): Observable<ChatMessage[]> {
         return this.messagesSubject.asObservable();
     }
+
+    public addHTMLTagsToResponseCode(response: string) {
+        // Match all code blocks in the response
+        const codeBlocks = response.match(/```(\w+)\n([\s\S]+?)\n```/g);
+    
+        if (codeBlocks) {
+            // Iterate over each code block
+            for (const codeBlock of codeBlocks) {
+                const matchResult = codeBlock.match(/```(\w+)\n([\s\S]+?)\n```/);
+    
+                if (matchResult) {
+                    const language = matchResult[1];
+                    let code = matchResult[2];
+                    // Replace the code block with HTML format
+                    const replacedBlock = `<pre><code class="language-${language}">${code}</code></pre>`;
+                    // Replace the original code block in the response
+                    response = response.replace(codeBlock, replacedBlock);
+                }
+            }
+    
+            return response;
+        } else {
+            return response;
+        }
+    }
+    
+
+
 }

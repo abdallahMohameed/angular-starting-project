@@ -19,6 +19,7 @@ import { AuthInterceptorService } from './core/interceptors/auth-interceptor.ser
 import { LayoutComponent } from './core/components/layout/layout.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TypingAnimationDirective } from './shared/Directives/typing-animation.directive';
+import { HighlightService } from './modules/chat/services/HighlightService/highlight.service';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -58,7 +59,10 @@ export function HttpLoaderFactory(http: HttpClient) {
             provide: HTTP_INTERCEPTORS,
             useClass: AuthInterceptorService,
             multi: true
-        }],
+        },
+        HighlightService
+
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
