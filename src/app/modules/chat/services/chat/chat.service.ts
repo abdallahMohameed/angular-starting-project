@@ -73,7 +73,7 @@ export class ChatService {
                     const language = matchResult[1];
                     let code = matchResult[2];
                     // Replace the code block with HTML format
-                    const replacedBlock = `<pre><code class="language-${language}">${code}</code></pre>`;
+                    const replacedBlock = `<pre  class="line-numbers"><code class="language-${language}">${code}</code></pre>`;
                     // Replace the original code block in the response
                     response = response.replace(codeBlock, replacedBlock);
                 }

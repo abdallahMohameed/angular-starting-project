@@ -1,4 +1,4 @@
-<button
+<!-- <button
   data-drawer-target="separator-sidebar"
   data-drawer-toggle="separator-sidebar"
   aria-controls="separator-sidebar"
@@ -20,8 +20,8 @@
       d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"
     ></path>
   </svg>
-</button>
-
+</button> -->
+<!-- 
 <aside
   id="separator-sidebar"
   class="fixed-top left-0 z-40 w-80 h-screen d-sm-block custom-sidebar"
@@ -54,7 +54,6 @@
         </a>
       </li>
       <div *ngIf="chatHistories.chatHistoryDetails.length > 0">
-        <!-- <div *ngFor="let i of [].constructor(totalChatConversation)"> -->
         <div
           *ngFor="let chatDetails of chatHistories.chatHistoryDetails"
           id="chatConversation"
@@ -120,4 +119,52 @@
     <div class="d-flex flex-column">
     </div>
   </div>
-</aside>
+</aside> -->
+<div>
+  <div class="sidebarr col-2">
+    <div class="chats">
+    <img src="../../../../../assets/icons/logo-01-1.png" class="my-2 mb-4" width="100%" height="50px" >
+    <button class="d-flex justify-content-between">
+      <span>New Chat</span>
+
+      <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="icon icon-tabler icon-tabler-circle-plus"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+            stroke="currentColor"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
+            <path d="M9 12l6 0"></path>
+            <path d="M12 9l0 6"></path>
+          </svg>
+    </button>
+  </div>
+  <div class="profile">
+    <a href="#" class="tab">
+        email@example.com
+    </a>
+  </div>
+</div>
+</div>
+  <!-- <div class="sidebar">
+    <div class="chats">
+        <button>New Chat</button>
+    </div>
+
+    <div class="profile">
+        <a href="#" class="tab" data-call="upgrade">
+            Upgrade to Plus
+        </a>
+        <br>
+        <a href="#" class="tab">
+            email@example.com
+        </a>
+    </div>
+  </div> -->

@@ -161,7 +161,7 @@
   .typing-container {
     position: fixed;
     bottom: 0;
-    width: 100%;
+    width: -webkit-fill-available;
     display: flex;
     padding: 20px 10px;
     justify-content: center;
@@ -170,7 +170,7 @@
   }
   .typing-container .typing-content {
     display: flex;
-    max-width: 950px;
+    // max-width: 950px;
     width: 100%;
     align-items: flex-end;
   }

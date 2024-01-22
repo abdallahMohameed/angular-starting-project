@@ -15,6 +15,7 @@ import 'prismjs/components/prism-markup';
 import 'prismjs/components/prism-typescript';
 import 'prismjs/components/prism-sass';
 import 'prismjs/components/prism-scss';
+import 'prismjs/components/prism-csharp';
 
 // eslint-disable-next-line no-var
 declare var Prism: any;
@@ -26,9 +27,13 @@ export class HighlightService {
     constructor(@Inject(PLATFORM_ID) private platformId: Object) {
 
      }
+     
 
     highlightAll() {
-      
+        // Prism.hooks.add('before-highlight', function(env) {
+        //     let language = Languages[env.language] || env.language;
+        //     env.element.setAttribute('data-language', language);
+        // });
         if (isPlatformBrowser(this.platformId)) {
             Prism.hooks.add("before-highlight", function (env:any) {
                 env.code = env.element.innerText;

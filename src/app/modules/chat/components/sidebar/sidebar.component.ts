@@ -35,13 +35,13 @@ export class SidebarComponent implements OnInit {
     async addNewChat() {
         if (this.isHistoricalChat === false) {
             const chatHistoryId = uuidv4();
-            const title = "configure method for title";
+            const title = "title";
             //  (await this.chatService.getTitleFromChatGpt(this.messages)).data.choices[0].message?.content!;
 
             const chatHistory: ChatHistoryDetails = {
                 id: chatHistoryId,
                 messages: this.messages,
-                title: title
+                title: 'title'
             };
 
             this.chatHistories = this.getCurrentChatHistoriesFromLocalStorage();
